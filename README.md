@@ -6,4 +6,4 @@
     <li><b>Class: </b>23KRG-2B</li>
 </ul>
 <h3>About This Repo</h3>
-<p>This repository contins the documentation as well as the code of the experiments held in ADBMS Class</p>
+<p>This repository contains the documentation as well as the code of the experiments held in ADBMS Class.</p>
