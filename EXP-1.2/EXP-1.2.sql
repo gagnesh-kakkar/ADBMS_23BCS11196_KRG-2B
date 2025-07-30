@@ -1,0 +1,69 @@
+USE Gagnesh
+
+--QUESTION 1: MEDIUM
+
+CREATE TABLE EMPLOYEE
+(
+EMPID INT IDENTITY(1, 1),
+Ename VARCHAR(MAX),
+Department VARCHAR(MAX), 
+ManagerID INT
+)
+
+INSERT INTO EMPLOYEE (Ename, Department, ManagerID) 
+VALUES ('Alice', 'HR', NULL),
+('Bob', 'Finance', 1),
+('Charlie', 'IT', 1),
+('David', 'Finance', 2),
+('Eve', 'IT', 3),
+('Frank', 'HR', 1)
+
+SELECT E1.Ename AS [EMPLOYEE NAME], E2.Ename AS [MANAGER NAME],
+	   E1.Department AS [EMPLOYEE DEPARTMENT], E2.Department AS [MANAGER DEPARTMENT]
+FROM EMPLOYEE AS E1
+LEFT OUTER JOIN
+EMPLOYEE AS E2
+ON 
+E1.ManagerID = E2.EMPID
+
+
+--QUESTION 2: HARD
+
+CREATE TABLE Year_tbl
+(
+ID INT, 
+YEAR INT, 
+NPV INT
+)
+
+INSERT INTO Year_tbl 
+VALUES (1, 2018, 100),
+	(7, 2020, 30),
+	(13, 2019, 40),
+	(1, 2019, 113),
+	(2, 2008, 121),
+	(3, 2009, 12),
+	(11, 2020, 9),
+	(7, 2019, 0)
+
+CREATE TABLE Queries_tbl
+(
+ID INT, 
+YEAR INT
+)
+
+INSERT INTO Queries_tbl VALUES (1, 2019),
+(2, 2008),
+(3, 2009),
+(7, 2018),
+(7, 2019),
+(7, 2020),
+(13, 2019)
+
+
+SELECT Q.ID , Q.YEAR, ISNULL(Y.NPV,0)
+FROM Queries_tbl AS Q
+LEFT OUTER JOIN
+Year_tbl AS Y
+ON 
+Q.ID = Y.ID AND Q.YEAR = Y.YEAR
